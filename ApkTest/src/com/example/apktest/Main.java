@@ -1,6 +1,6 @@
 package com.example.apktest ;
 
-import android.support.v4.app.NotificationCompat ;
+//import android.support.v4.app.NotificationCompat ;
 import android.util.Log ;
 import android.annotation.SuppressLint ;
 import android.app.Activity ;
@@ -111,12 +111,12 @@ public class Main extends Activity
 	
 	
 
-/*	@SuppressWarnings("deprecation")
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void onStop()
 	{
 
-		NotificationCompat.Builder myBuilder = new NotificationCompat.Builder(this) ;
+/*		NotificationCompat.Builder myBuilder = new NotificationCompat.Builder(this) ;
 		myBuilder.setSmallIcon(android.R.drawable.stat_sys_warning) ;
 		myBuilder.setLargeIcon(((BitmapDrawable) getResources().getDrawable(R.drawable.ic_launcher)).getBitmap()) ;
 		myBuilder.setContentTitle("Este es un MENSAGE de alerta").setContentText("Este es el TEXTO de alerta" + texto) ;
@@ -130,7 +130,8 @@ public class Main extends Activity
 
 		// Calling the onStop from the super class
 		super.onStop() ;
-	}*/
+*/
+	}
 
 }
 

@@ -17,7 +17,7 @@ public class BigOruntimes
 	public static void main(String[] args)
 	{
 		//O(n^2)
-		System.out.println("2.1 ==>     O(n^2)     <==") ;
+		System.out.println("2.1 ==>     O(n^2)     <==") ;//
 		
 		int[] array1 = {1,0,1,0,1,1,0,0,1,0,0,1} ;
 		print(array1) ;System.out.println(bubbleSort(array1)) ; print(array1) ;
