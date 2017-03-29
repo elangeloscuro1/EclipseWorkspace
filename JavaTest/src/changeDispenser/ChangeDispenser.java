@@ -50,6 +50,7 @@ public class ChangeDispenser
 		while (option != -1)
 		{
 			System.out.println("Enter Amount") ;
+			break ;
 			
 		}
 		

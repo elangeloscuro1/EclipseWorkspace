@@ -2,19 +2,14 @@ package CS113MidTermPracticeExam;
 
 
 import java.util.ArrayDeque ;
-import java.util.ArrayList ;
-import java.util.Queue ;
-import java.util.Stack ;
-import printerQueue.ArrayQueue;
 
 public class BigOruntimes
 {
-
 	
 	
 	
 	
-	public static void main(String[] args)
+	public static void main2(String[] args)
 	{
 		//O(n^2)
 		System.out.println("2.1 ==>     O(n^2)     <==") ;//
@@ -26,25 +21,20 @@ public class BigOruntimes
 		//O(n)
 		System.out.println("2.3 ==>     O(n)     <==") ;
 		int[] array2 = {1,0,1,0,1,1,0,0,1,0,0,1} ;
-		print(array2) ; array2 = oNSort(array2) ; print(array2) ;
+		print(array2) ; array2 = oNSortEC(array2) ; print(array2) ;
 		System.out.println() ;
 		
 		
 		//O(n)
 		System.out.println("2.e ==>     O(n)     <==") ;
 		int[] array3 = {1,0,1,0,1,1,0,0,1,0,0,1} ;
-		print(array3) ; System.out.println(sort(array3)) ; print(array3) ;
-		System.out.println() ;
-		
-		
-		
+		print(array3) ; System.out.println(oNsort3(array3)) ; print(array3) ;
+		System.out.println() ;	
 	
-/*		Stack<Object> stack = new Stack<Object>() ;     
-		// E push(E obj);  E pop();  E peek(); boolean empty();                ==> Topic 6 slide 6		
-		Queue<Object> queue = new ArrayQueue<Object>() ;
-		// boolean offer(E obj); E poll(); E peek();  E remove(); E element() ; ==> Topic 6 slide 40
-*/		
 	}
+	/*************************************************************************************
+	 * Print array values
+	 *************************************************************************************/
 	
 	public static void print(int[] array)
 	{
@@ -55,6 +45,9 @@ public class BigOruntimes
 		}
 		System.out.println() ;
 	}
+	/*************************************************************************************
+	 * bubbleSort
+	 *************************************************************************************/
 	public static int bubbleSort(int[] array)
 	{
 		int counter = 0 ;
@@ -77,36 +70,11 @@ public class BigOruntimes
 		}	
 		return counter ;
 		
-	}
-	public static int[] oNSort(int[] array)
-	{
-		int[] temp = new int[array.length] ;
-		int start = 0 ;
-		int end = array.length - 1 ;
-		int count = 0 ;//
-		
-		for (int i = 0; i < array.length; i++)
-		{
-			if (array[i] > 0)
-			{
-				temp[end--] = array[i] ;
-			}
-			else
-			{
-				temp[start++] = array[i] ;
-			}
-			
-			count++ ;//
-		}
-		System.out.println(count) ;//
-		
-		return temp ;
-	}
-
-	
-	
-	
-	public static int sort(int[] a)
+	}	
+	/*************************************************************************************
+	 * oNSort3
+	 *************************************************************************************/
+	public static int oNsort3(int[] a)
 	{
 		ArrayDeque<Integer> temp = new ArrayDeque<>(a.length) ;
 		int count = 0 ;
@@ -131,47 +99,39 @@ public class BigOruntimes
 		}
 		return count ;
 	}
+	/*************************************************************************************
+	 * oNSortEC
+	 *************************************************************************************/	
+	public static int[] oNSortEC(int[] array)
+	{
+		int[] temp = new int[array.length] ;
+		int start = 0 ;
+		int end = array.length - 1 ;
+		int count = 0 ;//
+		
+		for (int i = 0; i < array.length; i++)
+		{
+			if (array[i] > 0)
+			{
+				temp[end--] = array[i] ;
+			}
+			else
+			{
+				temp[start++] = array[i] ;
+			}
+			
+			count++ ;//
+		}
+		System.out.println(count) ;//		
+		return temp ;
+	}
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
+}//
 
 
 
