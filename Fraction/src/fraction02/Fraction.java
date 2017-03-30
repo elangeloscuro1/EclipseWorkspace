@@ -70,7 +70,7 @@ public class Fraction
 		{
 			throw new ArithmeticException("Denominator cannot be zero!") ;
 		}
-		this.denominator = denominator > 0 ? denominator : denominator * - 1 ;
+		this.denominator = denominator > 0 ? denominator : denominator * -1 ;
 		this.numerator =  denominator > 0 ? this.numerator : this.numerator * -1 ;
 		
 		int tempNumerator = this.numerator > 0 ? this.numerator : numerator * -1 ;		
