@@ -1,4 +1,5 @@
-
+import java.awt.image.BufferedImage ;
+import java.util.Scanner ;
 
 public class JavaTest
 {
@@ -10,27 +11,51 @@ public class JavaTest
 	
 	public static void main(String[] args)
 	{
+		System.out.println("Introduce el texto a codificar: ");
+        Scanner sc = new Scanner(System.in);
+        String data = sc.nextLine();
+        System.out.println("Cofificando...");
+        BitMatrix matriz;
+        Writer writer = new QRCodeWriter();
+        try {
+            matriz = writer.encode(data, BarcodeFormat.QR_CODE, qrTamAncho, qrTamAlto);
+        } catch (WriterException e) {
+            e.printStackTrace(System.err);
+            return;
+        }
+        BufferedImage imagen = new BufferedImage(qrTamAncho,
+                qrTamAlto, BufferedImage.TYPE_INT_RGB);
+        for (int y = 0; y < qrTamAlto; y++) {
+            for (int x = 0; x < qrTamAncho; x++) {
+                int valor = (matriz.get(x, y) ? 0 : 1) & 0xff;
+                imagen.setRGB(x, y, (valor == 0 ? 0 : 0xFFFFFF));
+            }
+        }
+        FileOutputStream qrCode = new FileOutputStream(ruta);
+        ImageIO.write(imagen, formato, qrCode);
+        System.out.println("Listo!");
+        qrCode.close();
 		
 		
-		int[] array = {1,0,1,0,1,1,0,0,1,0,0,1} ;
-		
-		for (int i = 1; i < array.length; i++)
-		{
-			for (int j = 0; j < array.length; j++)
-			{
-				if (array[i] < array[j])
-				{
-					int temp = array[i] ;
-					array[i] = array[j] ;
-					array[j] = temp ;
-				}
-			}
-		}
-		
-		for (int i = 0; i < array.length; i++)
-		{
-			System.out.println(array[i]) ;
-		}
+//		int[] array = {1,0,1,0,1,1,0,0,1,0,0,1} ;
+//		
+//		for (int i = 1; i < array.length; i++)
+//		{
+//			for (int j = 0; j < array.length; j++)
+//			{
+//				if (array[i] < array[j])
+//				{
+//					int temp = array[i] ;
+//					array[i] = array[j] ;
+//					array[j] = temp ;
+//				}
+//			}
+//		}
+//		
+//		for (int i = 0; i < array.length; i++)
+//		{
+//			System.out.println(array[i]) ;
+//		}
 		
 /*		for (int i = -5 ; i < 5 ; i++)
 		{
