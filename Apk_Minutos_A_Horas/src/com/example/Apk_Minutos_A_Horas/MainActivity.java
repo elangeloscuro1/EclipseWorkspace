@@ -1,4 +1,7 @@
-package com.example.minutestool ;
+
+
+package com.example.Apk_Minutos_A_Horas ;
+
 
 import android.app.Activity ;
 import android.os.Bundle ;
@@ -6,6 +9,7 @@ import android.view.KeyEvent ;
 import android.view.View ;
 import android.view.View.OnKeyListener ;
 import android.widget.EditText ;
+
 public class MainActivity extends Activity implements OnKeyListener
 {
 
