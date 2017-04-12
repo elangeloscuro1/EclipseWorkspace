@@ -318,7 +318,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     return super.onKeyDown(keyCode, event);
   }
 
-  @Override
+/*  @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     super.onCreateOptionsMenu(menu);
     menu.add(Menu.NONE, SHARE_ID, Menu.NONE, R.string.menu_share)
@@ -378,7 +378,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         return super.onOptionsItemSelected(item);
     }
     return true;
-  }
+  }*/
 
   @Override
   public void onActivityResult(int requestCode, int resultCode, Intent intent) {
