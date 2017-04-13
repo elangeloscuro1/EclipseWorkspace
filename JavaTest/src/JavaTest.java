@@ -1,5 +1,11 @@
-import java.awt.image.BufferedImage ;
-import java.util.Scanner ;
+//import java.awt.image.BufferedImage ;
+//import java.io.FileOutputStream ;
+//import java.io.Writer ;
+//import java.util.Scanner ;
+//
+//import javax.imageio.ImageIO ;
+//
+//import com.google.zxing.common.BitMatrix ;
 
 public class JavaTest
 {
@@ -11,30 +17,34 @@ public class JavaTest
 	
 	public static void main(String[] args)
 	{
-		System.out.println("Introduce el texto a codificar: ");
-        Scanner sc = new Scanner(System.in);
-        String data = sc.nextLine();
-        System.out.println("Cofificando...");
-        BitMatrix matriz;
-        Writer writer = new QRCodeWriter();
-        try {
-            matriz = writer.encode(data, BarcodeFormat.QR_CODE, qrTamAncho, qrTamAlto);
-        } catch (WriterException e) {
-            e.printStackTrace(System.err);
-            return;
-        }
-        BufferedImage imagen = new BufferedImage(qrTamAncho,
-                qrTamAlto, BufferedImage.TYPE_INT_RGB);
-        for (int y = 0; y < qrTamAlto; y++) {
-            for (int x = 0; x < qrTamAncho; x++) {
-                int valor = (matriz.get(x, y) ? 0 : 1) & 0xff;
-                imagen.setRGB(x, y, (valor == 0 ? 0 : 0xFFFFFF));
-            }
-        }
-        FileOutputStream qrCode = new FileOutputStream(ruta);
-        ImageIO.write(imagen, formato, qrCode);
-        System.out.println("Listo!");
-        qrCode.close();
+//		System.out.println("Introduce el texto a codificar: ") ;
+//		Scanner sc = new Scanner(System.in) ;
+//		String data = sc.nextLine() ;
+//		System.out.println("Cofificando...") ;
+//		BitMatrix matriz ;
+//		Writer writer = new QRCodeWriter() ;
+//		try
+//		{
+//			matriz = writer.encode(data, BarcodeFormat.QR_CODE, qrTamAncho, qrTamAlto) ;
+//		}
+//		catch (WriterException e)
+//		{
+//			e.printStackTrace(System.err) ;
+//			return ;
+//		}
+//		BufferedImage imagen = new BufferedImage(qrTamAncho, qrTamAlto, BufferedImage.TYPE_INT_RGB) ;
+//		for (int y = 0; y < qrTamAlto; y++)
+//		{
+//			for (int x = 0; x < qrTamAncho; x++)
+//			{
+//				int valor = (matriz.get(x, y) ? 0 : 1) & 0xff ;
+//				imagen.setRGB(x, y, (valor == 0 ? 0 : 0xFFFFFF)) ;
+//			}
+//		}
+//		FileOutputStream qrCode = new FileOutputStream(ruta) ;
+//		ImageIO.write(imagen, formato, qrCode) ;
+//		System.out.println("Listo!") ;
+//		qrCode.close() ;
 		
 		
 //		int[] array = {1,0,1,0,1,1,0,0,1,0,0,1} ;
