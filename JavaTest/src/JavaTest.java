@@ -17,6 +17,9 @@ public class JavaTest
 	
 	public static void main(String[] args)
 	{
+		System.out.println("Tom".hashCode() % 11) ;
+		System.out.println("Harry".hashCode() % 11) ;
+		
 //		System.out.println("Introduce el texto a codificar: ") ;
 //		Scanner sc = new Scanner(System.in) ;
 //		String data = sc.nextLine() ;
