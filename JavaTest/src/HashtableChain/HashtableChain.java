@@ -21,6 +21,12 @@ import java.util.Map ;
 import java.util.NoSuchElementException ;
 import java.util.Set ;
 
+
+
+
+
+
+
 /**
  * Hash table implementation using chaining.
  * 
@@ -29,6 +35,26 @@ import java.util.Set ;
 public class HashtableChain<K, V> implements Map<K, V>
 {
 
+	public static void main(String[] args)
+	{
+
+		HashtableChain<String, String> test = new HashtableChain<String, String>() ;
+		System.out.println(test.put("11", "BBAACC")) ;
+		System.out.println(test.put("22", "AABBCC")) ;
+		System.out.println(test.put("33", "CCBBAA")) ;
+
+		System.out.println(test.put("z", "ZZZZ")) ;
+		System.out.println(test.put("ya", "YYYY")) ;
+		
+		System.out.println("bac".hashCode() + " " + "bac".hashCode() % 5) ;
+		System.out.println("abc".hashCode() + " " + "abc".hashCode() % 5) ;
+		System.out.println("cba".hashCode() + " " + "cba".hashCode() % 5) ;
+		System.out.println("z".hashCode() + "   " + "z".hashCode()   % 5) ;
+		System.out.println("ya".hashCode() + "   " + "ya".hashCode()   % 5) ;
+		
+		System.out.println(test) ;
+	}
+	
 	/** The table */
 	private LinkedList<Entry<K, V>>[] table ;
 	/** The number of keys */

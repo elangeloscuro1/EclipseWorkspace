@@ -13,13 +13,14 @@ package edu.miracosta.cs113.lab14;
  * 	B) Implement the main method to test the program.
  *		-Create an array hashTabel that contains String objects.
  *		-Call the method find and test for some keys.
+ *		-Test a key that results as a negative value.
  *		-Display the end of the test.
  */
 /**
  * This class is a tester for a method find
  * that find a specified key from an hashTable array.
  * 
- * @author Angel Tapia angelTapia07084759@gmail.com
+ * @author Angel Tapia <angelTapia07084759@gmail.com>
  * version 1.0
  */
 public class Lab14Programming1
@@ -40,9 +41,7 @@ public class Lab14Programming1
 		System.out.println(find(hashTable, "Dick")) ;
 		System.out.println(find(hashTable, "Sam")) ;
 		System.out.println(find(hashTable, "Pete")) ;
-		System.out.println(find(hashTable, "Hola!")) ;
-		
-		
+		System.out.println(find(hashTable, "negavive!")) ;	
 		
 		System.out.println("...End of the test.") ;
 	}
@@ -54,23 +53,24 @@ public class Lab14Programming1
 	 * @param key: The key to be searched in the hasTanble.
 	 * @return the the object position in the hashTable or -1 if the object is not found.
 	 */
-	public static int find(Object[] values, Object key)
+	public static int find(Object[] table, Object key)
 	{
-		int index  = key.hashCode() % values.length ;
-
-		for (int i = 1 ; i <= values.length ; i++)
-		{
-			if (values[index] == null )
+		int index  = key.hashCode() % table.length ;		
+		index = index < 0 ? index + table.length : index ;
+		
+		for (int i = 0 ; i < table.length ; i++)
+		{			
+			if (table[index] == null )
 			{
 				return - 1 ;
 			}
-			else if (values[index].equals(key))
+			else if (table[index].equals(key))
 			{
 				return index ;
 			}
 			else
 			{
-				index = (key.hashCode() + i) % values.length ;
+				index = (index + 1) % table.length ;
 			}
 		}		
 		return - 1 ;
