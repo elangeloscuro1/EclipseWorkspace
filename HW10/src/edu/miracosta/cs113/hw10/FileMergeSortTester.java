@@ -1,4 +1,4 @@
-package edu.miracosta.cs113.hw10Copy ;
+package edu.miracosta.cs113.hw10;
 
 import java.io.File ;
 import java.io.FileNotFoundException ;
@@ -25,14 +25,13 @@ import java.util.Scanner ;
  * 
  */
 /**
- * FileMergeSort is sorts file using sequential data files.
+ * FileMergeSorttester tests FileMergeSort.
  * 
  * @author Angel Tapia <angelTapia07084759@gmail.com>
  * version 1.0
  */
-public class FileMergeSort
+public class FileMergeSortTester
 {
-
 	/**
 	 * Sorts a sequential data file that contains integers.
 	 * 
@@ -40,85 +39,103 @@ public class FileMergeSort
 	 */
 	public static void main(String[] args)
 	{
-		File originalFile = new File("OriginalFileForMergeSort.txt") ;
+		String fileName = "OriginalFileForMergeSort.txt" ;
+		new FileMergeSortTester(fileName).sort() ;
+	}
+
+	/** File to be used to separate smallest values. */
+	private static final File LEFT_FILE  = new File("leftFile.txt")  ;
+	/** File to be used to separate largest values. */
+	private static final File RIGHT_FILE = new File("rightFile.txt") ;
+	//
+	private static final File TEMP_FILE  = new File("tempFile.txt")  ;
+
+	private static File originalFile = null ;
+	
+	public FileMergeSortTester(String fileName)
+	{
+		originalFile = new File(fileName) ; 
+	}
+	
+	
+	public boolean sort()
+	{		
 		
-		try
+	
+		return true ;
+	}
+	
+	public Scanner scanFile(File file) throws FileNotFoundException
+	{
+		return new Scanner(originalFile) ;
+	}	
+	
+	public PrintWriter writeFile(File file, boolean append) throws FileNotFoundException
+	{
+		return new PrintWriter(new FileOutputStream(file, append)) ;
+	}
+	
+	public boolean splitFile(Scanner original, PrintWriter left, PrintWriter right) throws FileNotFoundException
+	{
+		int countSwaps = 0 ;
+		
+		Integer prev = null ;
+		while (original.hasNextInt())
 		{
-			originalFile.delete() ;
-			PrintWriter generate = new PrintWriter(new FileOutputStream(originalFile, true) ) ;
-			
-			for (int i = 0; i < 20 ; i++)
+			int current = original.nextInt() ;
+
+			if (original.hasNextInt())
 			{
-				int a = (int) (Math.random() * 10) ;
-				if (a % 7 == 0)
-				{
-					a *= -1 ;
-				}
-				System.out.println(a) ;
-				generate.println(a) ;
-				generate.flush() ;
-			}			
-		}
-		catch (FileNotFoundException e1)
-		{
-			System.out.println(e1.getMessage()) ;
+				int next = original.nextInt() ;
+
+				left.println((next < current) ? next : current) ;
+				right.println((next > current) ? next : current) ;						
+				left.flush() ;
+				right.flush() ;
+				prev = next ;
+				countSwaps = current > next ? (countSwaps + 1) : countSwaps ;						
+			}
+			else
+			{
+				countSwaps = prev != null && prev > current  ? (countSwaps + 1) : countSwaps ;	
+				left.println(current) ;
+				left.flush() ;
+			}
 		}		
-		
-		// Files to be used
-		File leftFile = new File("leftFile.txt") ;
-		File rightFile = new File("rightFile.txt") ;
-		File tempFile = new File("tempFile.txt") ;
-		
-		// flag
+		return countSwaps == 0 ;		
+	}
+	
+	public void mergeFiles(Scanner left, Scanner right, PrintWriter original) throws FileNotFoundException
+	{
+		String OriginalFileName = originalFile.getName() ;
+		originalFile.renameTo(TEMP_FILE) ;
+		originalFile.delete() ;
+	}
+	
+	public void mainTest(String[] args)
+	{		
 		boolean isSorted = false ;
-		while (!isSorted /*&& count < 1*/)
+		while (!isSorted)
 		{
 			try
 			{
-				// Delete any existent file
-				leftFile.delete() ;
-				rightFile.delete() ;
-				tempFile.delete() ;				
+				LEFT_FILE.delete() ;
+				RIGHT_FILE.delete() ;
+				TEMP_FILE.delete() ;				
 				
-				// scanner an writer for the left and right files
-				Scanner scanOriginal = new Scanner(originalFile) ;
-				PrintWriter leftWriter = new PrintWriter(new FileOutputStream(leftFile, true)) ;
-				PrintWriter rightWriter = new PrintWriter(new FileOutputStream(rightFile, true)) ;
+				Scanner scanOriginal = scanFile(originalFile) ;				
+				PrintWriter leftWriter =  writeFile(LEFT_FILE, true)  ;
+				PrintWriter rightWriter =  writeFile(RIGHT_FILE, true) ;
+				
+				isSorted = splitFile(scanOriginal, leftWriter, rightWriter) ;		
+				boolean isMerging = !isSorted ;
 
 				// Scanners and writer to update the original file.
-				Scanner scanLeft = new Scanner(leftFile) ;
-				Scanner scanRight = new Scanner(rightFile) ;
-				PrintWriter newWriter = new PrintWriter(new FileOutputStream(tempFile, true)) ;
-
-				int countSwaps = 0 ;// counts swaps if current > next
-				
-				// Separating values smaller to leftFile and larger rifgtFile
-				Integer prev = null ;
-				while (scanOriginal.hasNextInt())
-				{
-					int current = scanOriginal.nextInt() ;
-
-					if (scanOriginal.hasNextInt())
-					{
-						int next = scanOriginal.nextInt() ;
-
-						leftWriter.println((next < current) ? next : current) ;
-						rightWriter.println((next > current) ? next : current) ;						
-						leftWriter.flush() ;
-						rightWriter.flush() ;
-						prev = next ;
-						countSwaps = current > next ? (countSwaps + 1) : countSwaps ;						
-					}
-					else
-					{
-						countSwaps = prev != null && prev > current  ? (countSwaps + 1) : countSwaps ;	
-						leftWriter.println(current) ;
-						leftWriter.flush() ;
-					}
-				}System.out.println("SWAPS: " + countSwaps) ;
+				Scanner scanLeft = scanFile(LEFT_FILE) ;
+				Scanner scanRight = scanFile(RIGHT_FILE) ;
+				PrintWriter newWriter =  writeFile(TEMP_FILE, true) ;				
 								
-				isSorted = countSwaps == 0 ;// 0 swaps means is sorted				
-				boolean isMerging = !isSorted ;
+				
 
 				Integer nextLeft = scanLeft.hasNextInt() ? scanLeft.nextInt() : null ;
 				Integer nextRight = scanRight.hasNextInt() ? scanRight.nextInt() : null ;
@@ -172,7 +189,7 @@ public class FileMergeSort
 				if (!isSorted)
 				{
 					originalFile.delete() ;
-					tempFile.renameTo(originalFile) ;
+					TEMP_FILE.renameTo(originalFile) ;
 				}
 			}
 			catch (FileNotFoundException e)
