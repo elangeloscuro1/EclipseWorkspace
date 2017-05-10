@@ -61,8 +61,7 @@ public class BinaryTree<E> implements Serializable
 	public BinaryTree()
 	{
 		this.root = null ;
-	}
-	
+	}	
 	
 	/**
 	 * Constructs a binary tree with the given node as the root.
@@ -72,8 +71,7 @@ public class BinaryTree<E> implements Serializable
 	protected BinaryTree(Node<E> root)
 	{
 		this.root = root ;
-	}
-	
+	}	
 	
 	/**
 	 * Constructs a binary tree with the given node as the root
@@ -157,15 +155,16 @@ public class BinaryTree<E> implements Serializable
 	{
 		return (this.root.left == null && this.root.right == null) ;
 	}	
-	
+		
 	/**
-	 * preOrderTraverse performs a preorder traversal of the subtree.
+	 * preOrderTraverse performs a preorder traversal of the specified subtree
+	 * appending the data in a StringBuilder object giving a two-dimensional look.
 	 * 
 	 * @param node: the current subtree (node) of the tree.
 	 * @param depth: the current tree level. 
 	 * @param sb: Appends each node data, building a representation of the tree.
 	 */
-	private void preOrderTraverse(Node<E> node, int depth, StringBuilder sb)
+	protected void preOrderTraverse(Node<E> node, int depth, StringBuilder sb)
 	{
 		for (int i = 1; i < depth; i++)
 		{
@@ -181,95 +180,57 @@ public class BinaryTree<E> implements Serializable
 			preOrderTraverse(node.left, depth + 1, sb) ;
 			preOrderTraverse(node.right, depth + 1, sb) ;
 		}
-	}
+	}	
 	
 	/**
-	 * inOrderTraverse performs a in order traversal of the subtree.
+	 * preOrderTraverse performs a preorder traversal of the specified subtree.
 	 * 
 	 * @param node: the current subtree (node) of the tree.
 	 * @param depth: the current tree level. 
 	 * @param sb: Appends each node data, building a representation of the tree.
 	 */
-	private void inOrderTraverse(Node<E> node, int depth, StringBuilder sb)
+	protected void preOrderTraverse(Node<E> node, StringBuilder sb)
 	{
-		for (int i = 1; i < depth; i++)
+		if (node != null)
 		{
-			sb.append(" | ") ;
-		}
-		if (node == null)
-		{
-			sb.append("null\n") ;
-		}
-		else
-		{			
-			inOrderTraverse(node.left, depth + 1, sb) ;
-			sb.append(node.toString() + "\n") ;
-			inOrderTraverse(node.right, depth + 1, sb) ;
+			sb.append(String.format("%-6s",node.toString())) ;
+			preOrderTraverse(node.left, sb) ;
+			preOrderTraverse(node.right, sb) ;
 		}
 	}
 	
 	/**
-	 * postOrderTraverse performs a post order traversal of the subtree.
+	 * inOrderTraverse performs a in order traversal of the specified subtree.
 	 * 
 	 * @param node: the current subtree (node) of the tree.
 	 * @param depth: the current tree level. 
 	 * @param sb: Appends each node data, building a representation of the tree.
 	 */
-	private void postOrderTraverse(Node<E> node, int depth, StringBuilder sb)
-	{
-		for (int i = 1; i < depth; i++)
+	protected void inOrderTraverse(Node<E> node, StringBuilder sb)
+	{		
+		if (node != null)
 		{
-			sb.append(" | ") ;
-		}
-		if (node == null)
-		{
-			sb.append("null\n") ;
-		}
-		else
-		{			
-			postOrderTraverse(node.left, depth + 1, sb) ;			
-			postOrderTraverse(node.right, depth + 1, sb) ;
-			sb.append(node.toString() + "\n") ;
+			preOrderTraverse(node.left, sb) ;
+			sb.append(String.format("%-6s",node.toString())) ;
+			preOrderTraverse(node.right, sb) ;
 		}
 	}
 	
 	/**
-	 * Builds a string that contains a representation of the tree
-	 * in preorder traversal.
+	 * postOrderTraverse performs a post order traversal of the specified subtree.
 	 * 
-	 * @return a string representation of the tree in preorder traversal.
+	 * @param node: the current subtree (node) of the tree.
+	 * @param depth: the current tree level. 
+	 * @param sb: Appends each node data, building a representation of the tree.
 	 */
-	public String preOrderTraverse()
+	protected void postOrderTraverse(Node<E> node, StringBuilder sb)
 	{
-		StringBuilder sb = new StringBuilder() ;
-		preOrderTraverse(this.root, 1, sb) ; 
-		return sb.toString() ;	
-	}
-	
-	/**
-	 * Builds a string that contains a representation of the tree
-	 * in inorder traversal.
-	 * 
-	 * @return a string representation of the tree in inorder traversal.
-	 */
-	public String inOrderTraverse()
-	{
-		StringBuilder sb = new StringBuilder() ;
-		inOrderTraverse(this.root, 1, sb) ; 
-		return sb.toString() ;		
-	}
-	
-	/**
-	 * Builds a string that contains a representation of the tree
-	 * in postorder traversal.
-	 * 
-	 * @return a string representation of the tree in postorder traversal.
-	 */
-	public String postOrderTraverse()
-	{
-		StringBuilder sb = new StringBuilder() ;
-		postOrderTraverse(this.root, 1, sb) ; 
-		return sb.toString() ;		
+		if (node != null)
+		{		
+			preOrderTraverse(node.left, sb) ;
+			preOrderTraverse(node.right, sb) ;
+			sb.append(String.format("%-6s",node.toString())) ;
+		}
 	}
 	
 	/**
@@ -295,7 +256,8 @@ public class BinaryTree<E> implements Serializable
 	}
 	
 	/**
-	 * toString builds a string that contains all of the data in this tree.
+	 * toString uses the method preOrderTraverse
+	 * to build a string that contains all of the data in this tree.
 	 * 
 	 * @return a string that contain all of the data in this tree.
 	 */
