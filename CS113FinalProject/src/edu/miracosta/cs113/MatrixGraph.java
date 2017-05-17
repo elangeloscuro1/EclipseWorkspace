@@ -5,45 +5,6 @@ import java.util.Scanner ;
 
 public class MatrixGraph extends AbstractGraph
 {
-	public String[] vertices ;
-	public double[][] weights ;
-	
-	public MatrixGraph()
-	{
-		this.weights = null ;
-		this.vertices = null ;
-	}
-	public MatrixGraph(Scanner vertices, Scanner edges)
-	{
-		
-		loadVerticesFromFile(vertices) ;
-		initializeWeights() ;
-		loadEdgesFromFile(edges) ;
-		
-		
-//		for (int i = 0; i < this.vertices.length; i++)
-//		{
-//			for (int j = 0; j < this.vertices.length; j++)
-//			{				
-//				System.out.print(this.vertices[i] + " ==> " + this.vertices[j] +"  "+ weights[i][j]) ;
-//				System.out.println("   <>  " + i + " ==> " + j + " " + weights[i][j]  ) ;
-//			}
-//		}
-//	
-	}
-	
-	private void initializeWeights()
-	{
-		this.weights = new double[numV][numV] ;
-		for (int i = 0; i < this.vertices.length; i++)
-		{
-			for (int j = 0; j < this.vertices.length; j++)
-			{				
-				weights[i][j] = Double.POSITIVE_INFINITY ;
-			}
-		}
-	}
-	
 	private class EdgeIterator implements Iterator<Edge>
 	{
 		private int indexRow = 0 ;
@@ -86,6 +47,48 @@ public class MatrixGraph extends AbstractGraph
 		}
 		
 	}
+	
+	public String[] vertices ;
+	public double[][] weights ;
+	public Edge[] edgesPath ;
+	
+	public MatrixGraph()
+	{
+		this.weights = null ;
+		this.vertices = null ;
+	}
+	public MatrixGraph(Scanner vertices, Scanner edges)
+	{
+		
+		loadVerticesFromFile(vertices) ;
+		initializeWeights() ;
+		this.edgesPath = loadEdgesFromFile(edges) ;
+		
+		
+		for (int i = 0; i < this.vertices.length; i++)
+		{
+			for (int j = 0; j < this.vertices.length; j++)
+			{				
+				System.out.print(this.vertices[i] + " ==> " + this.vertices[j] +"  "+ weights[i][j]) ;
+				System.out.println("   <>  " + i + " ==> " + j + " " + weights[i][j]  ) ;
+			}
+		}
+	
+	}
+	
+	private void initializeWeights()
+	{
+		this.weights = new double[numV][numV] ;
+		for (int i = 0; i < this.vertices.length; i++)
+		{
+			for (int j = 0; j < this.vertices.length; j++)
+			{				
+				weights[i][j] =  Double.POSITIVE_INFINITY ;
+			}
+		}
+	}
+	
+
 	public MatrixGraph(int numV, boolean directed)
 	{
 		super(numV, directed) ;
@@ -110,7 +113,7 @@ public class MatrixGraph extends AbstractGraph
 	}
 
 	@Override
-	public void loadVerticesFromFile(Scanner scan)
+	public void loadVerticesFromFile(Scanner scan)// File to array
 	{
 		ArrayList<String> vertixList = new ArrayList<String>() ;
 		while(scan.hasNextLine())
@@ -126,7 +129,7 @@ public class MatrixGraph extends AbstractGraph
 	}
 
 	@Override
-	public Edge[] loadEdgesFromFile(Scanner scan)
+	public Edge[] loadEdgesFromFile(Scanner scan)// file to a double array
 	{
 		ArrayList<Edge> edges = new ArrayList<Edge>() ;
 		int source = 0 ;		
@@ -153,28 +156,12 @@ public class MatrixGraph extends AbstractGraph
 			edgeArray[i] = edges.get(i) ;
 			int src = edges.get(i).getSource() ;
 			int dest = edges.get(i).getDest() ;
-			double wieght = edges.get(i).getWeight() ;
-			this.weights[src][dest] = wieght == 0 ? Double.POSITIVE_INFINITY : wieght ;
+			double weight = edges.get(i).getWeight() ;
+			this.weights[src][dest] = weight == 0 ? Double.POSITIVE_INFINITY: weight ;
 						
 		}
 		return edgeArray ;
 	}
-
-
-	
-//	
-//	// String State, String Name, String state and weight
-//	private Airport[] readFile(Scanner scan)
-//	{
-//		ArrayList<Airport> airport = new ArrayList<Airport>() ;
-//		while (scan.hasNext())
-//		{
-//			String state = scan.next() ;
-//			double cost = scan.nextDouble() ;
-//			airport.add(new Airport(state, cost)) ;
-//		}
-//		return (Airport[]) airport.toArray() ;
-//	}
 	
 	
 

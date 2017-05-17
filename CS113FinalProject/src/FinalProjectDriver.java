@@ -1,110 +1,70 @@
 
+import java.awt.FlowLayout ;
 import java.util.HashSet ;
 import java.util.Scanner ;
 
-import edu.miracosta.cs113.MatrixGraph ;
+import javax.swing.JButton ;
+import javax.swing.JFrame ;
 
-public class FinalProjectDriver
+
+import edu.miracosta.cs113.TravelPlanner ;
+
+public class FinalProjectDriver extends JFrame
 {
-	public static void main(String[] args)
+	static Scanner ver = new Scanner("0\n1\n2\n3\n4") ;
+	static Scanner wei = new Scanner("0  10 0  30  100  \n"
+			                + "0  0  50 0   0    \n"
+			                + "0  0  0  0   10   \n"
+			                + "0  0  20 0   60   \n"
+			                + "0  0  0  0   0    \n") ;
+	Scanner ver2 = new Scanner("A\nB\nC\nD\nE\nF") ;
+	Scanner wei2 = new Scanner("0  25 10 40  0   50 \n"
+			                + "0  0  0  10  20  0 \n"
+			                + "0  0  0  20  0   0 \n"
+			                + "0  0  0  0   30  0 \n"
+			                + "0  0  0  0   0   0 \n"
+			                + "0  0  0  15  0   0 \n") ;
+	
+	public FinalProjectDriver()
 	{
-		Scanner ver = new Scanner("A\nB\nC\nD\nE\nF") ;
-		Scanner wei = new Scanner("0  25 10 40  0   50 \n"
-				                + "0  0  0  10  20  0 \n"
-				                + "0  0  0  20  0   0 \n"
-				                + "0  0  0  0   30  0 \n"
-				                + "0  0  0  0   0   0 \n"
-				                + "0  0  0  15  0   0 \n") ;
-
+		TravelPlanner ports = new TravelPlanner(ver2, wei2) ;
+		setTitle("ADMIN") ;
+		//setSize(800, 800) ;
+		setLayout(new FlowLayout());
+		for (int i = 0; i < ports.vertices.length; i++)
+		{
+			add(new JButton(ports.vertices[i])) ;
+		}
+		pack() ;
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE) ;
+		setLocationRelativeTo(null);
+		setVisible(true);	
+	}
+	
+	public static void main(String[] args)
+	{	
 		
-		MatrixGraph ports = new MatrixGraph(ver, wei) ;
+		//new FinalProjectDriver() ;
 		
-//		
-//		for (int i = 0; i < ports.vertices.length; i++)
-//		{
-//			for (int j = 0; j < ports.vertices.length; j++)
-//			{
-//				if (ports[i][j] == Double.POSITIVE_INFINITY)
-//					System.out.printf(" %-5s |", '\u221e') ;
-//				else
-//				System.out.printf(" %-5s |", ports[i][j]) ;
-//			}
-//			System.out.println("\n") ;
-//		}
-//		
-//		System.out.println() ;
+		TravelPlanner ports = new TravelPlanner(ver, wei) ;
+		
 		int[] pred = new int[ports.vertices.length] ;
 		double[] dist = new double[ports.vertices.length] ;
 		
-		dijkstrasAlgorithm(ports.weights, 0 , pred, dist); 
+		ports.dijkstrasAlgorithm(ports.weights, 0 , pred, dist); 
 		for (int i = 0; i < ports.vertices.length; i++)
 		{
-			System.out.printf(i + "  %-7s%-5s%n%n", dist[i], pred[i]) ;
-		}
-	}
-
-	public static void main2(String[] args)
-	{
-		
-//		MatrixGraph test = new MatrixGraph() ;
-		double[][] ports = new double[5][5] ;
-		
-		ports[0][0] =  Double.POSITIVE_INFINITY ;
-		ports[0][1] = 10 ;
-		ports[0][2] =  Double.POSITIVE_INFINITY ;
-		ports[0][3] = 30 ;
-		ports[0][4] = 100 ;
-		
-		ports[1][0] =  Double.POSITIVE_INFINITY ;
-		ports[1][1] =  Double.POSITIVE_INFINITY ;
-		ports[1][2] = 50 ;
-		ports[1][3] =  Double.POSITIVE_INFINITY ;
-		ports[1][4] =  Double.POSITIVE_INFINITY ;
-		
-		ports[2][0] =  Double.POSITIVE_INFINITY ;
-		ports[2][1] =  Double.POSITIVE_INFINITY ;
-		ports[2][2] =  Double.POSITIVE_INFINITY ;
-		ports[2][3] =  Double.POSITIVE_INFINITY ;
-		ports[2][4] = 10 ;
-		
-		ports[3][0] =  Double.POSITIVE_INFINITY ;
-		ports[3][1] =  Double.POSITIVE_INFINITY ;
-		ports[3][2] = 20 ;
-		ports[3][3] =  Double.POSITIVE_INFINITY ;
-		ports[3][4] = 60 ;
-		
-		ports[4][0] =  Double.POSITIVE_INFINITY ;
-		ports[4][1] =  Double.POSITIVE_INFINITY ;
-		ports[4][2] =  Double.POSITIVE_INFINITY ;
-		ports[4][3] =  Double.POSITIVE_INFINITY ;
-		ports[4][4] =  Double.POSITIVE_INFINITY ;
-		
-		
-		for (int i = 0; i < ports.length; i++)
-		{
-			for (int j = 0; j < ports.length; j++)
-			{
-				if (ports[i][j] == Double.POSITIVE_INFINITY)
-					System.out.printf(" %-5s |", '\u221e') ;
-				else
-				System.out.printf(" %-5s |", ports[i][j]) ;
-			}
-			System.out.println("\n") ;
+			System.out.printf(i + " %-7s%-5s%n%n", dist[i], pred[i]) ;
 		}
 		
-		System.out.println() ;
-		int[] pred = new int[5] ;
-		double[] dist = new double[5] ;
+		ports.findCheapestPath(0, 4) ;
 		
-		dijkstrasAlgorithm(ports, 0 , pred, dist); 
-		for (int i = 0; i < ports.length; i++)
-		{
-			System.out.printf(i + "  %-7s%-5s%n%n", dist[i], pred[i]) ;
-		}
+		
+		
 		
 		
 	}
-	
+
 	public static void dijkstrasAlgorithm(double[][] graph, int start, int[] pred, double[] dist)
 	{
 		int numV = graph.length ;
