@@ -9,8 +9,8 @@ import java.util.Stack ;
 
 public class TravelPlanner
 {
-	String[] airports ;
-	double[][] costMatrix ;
+	private String[] airports ;
+	private double[][] costMatrix ;
 	
 	public TravelPlanner(Scanner vertices, Scanner edges) throws ParseException, InputMismatchException
 	{
