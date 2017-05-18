@@ -7,7 +7,7 @@ import java.util.InputMismatchException ;
 import java.util.Scanner ;
 import java.util.Stack ;
 
-public class TravelPlanner
+public class TravelPlanner//FlightData.txt
 {
 	private String[] airports ;
 	private double[][] costMatrix ;
@@ -126,7 +126,6 @@ public class TravelPlanner
 			
 			for (int i = to; i > from; i = pred[i])
 			{
-				double d = costMatrix[pred[i]][i] ;
 				aPath.add(pred[i]) ;
 			}
 

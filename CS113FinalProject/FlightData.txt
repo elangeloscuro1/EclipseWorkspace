@@ -1,0 +1,227 @@
+Birmingham-ShuttlesWorth International Airport
+Los Angeles International Airport
+550
+
+Los Angeles International Airport
+Phoenix Sky Harbor International Airport
+230
+
+Ted Stevens Anchorage International Airport
+Los Angeles International Airport
+260
+
+Ted Stevens Anchorage International Airport
+Phoenix Sky Harbor International Airport
+360
+
+John F. Kennedy International Airport
+T.F Green Airport
+340
+
+John F. Kennedy International Airport
+DallasFort Worth International
+250
+
+T.F Green Airport
+Baltimore-Washington International Airport
+380
+
+Baltimore-Washington International Airport
+Portland International Jetport
+300
+
+Phoenix Sky Harbor International Airport
+Reno-Tahoe International Airport
+250
+
+John F. Kennedy International Airport
+Northwest Arkansas Regional Airport
+226
+
+Ted Stevens Anchorage International Airport
+Denver International Airport
+490
+
+Bradley International Airport
+Wilmington Airport
+150
+
+DallasFort Worth International
+Fort Lauderdale–Hollywood International Airport
+170
+
+Los Angeles International Airport
+Daniel K. Inouye International Airport
+600
+
+Hartsfield-Jackson Atlanta International Airport
+Fort Lauderdale–Hollywood International Airport
+140
+
+Idaho Falls Regional Airport
+Portland International Airport
+460
+
+Southern Illinois Airport
+Nashville International Airport
+450
+
+Southern Illinois Airport
+Indianapolis International Airport
+130
+
+Denver International Airport
+The Eastern Iowa Airport
+150
+
+Kansas City International Airport
+Salt Lake City International Airport
+400
+
+Kansas City International Airport
+Albuquerque International Sunport
+420
+
+Jackson Hole Airport
+Bozeman Yellowstone International Airport
+165
+
+Bozeman Yellowstone International Airport
+Dulles International Airport
+500
+
+Dulles International Airport
+Idaho Falls Regional Airport
+520
+
+CincinnatiNorthern Kentucky International Airport
+Indianapolis International Airport
+350
+
+Fort Lauderdale–Hollywood International Airport
+Alexandria International Airport
+140
+
+Logan International Airport
+Bradley International Airport
+365
+
+Detroit Metropolitan Airport
+Southern Illinois Airport
+200
+
+Detroit Metropolitan Airport
+The Eastern Iowa Airport
+300
+
+Minneapolis–Saint Paul International Airport
+Detroit Metropolitan Airport
+200
+
+Salt Lake City International Airport
+Reno–Tahoe International Airport
+290
+
+Salt Lake City International Airport
+Minneapolis–Saint Paul International Airport
+280
+
+Bradley International Airport
+Nashville International Airport
+280
+
+Albuquerque International Sunport
+DallasFort Worth International Airport
+310
+
+Jackson–Evers International Airport
+Alexandria International Airport
+560
+
+Springfield-Branson National Airport
+Kansas City International Airport
+410
+
+Lincoln Airport
+The Eastern Iowa Airport
+350
+
+Phoenix Sky Harbor International Airport
+Jackson Hole Airport
+430
+
+Los Angeles International Airport
+Portland International Airport
+100
+
+Manchester–Boston Regional Airport
+John F. Kennedy International Airport
+160
+
+Newark Liberty International Airport
+Wilmington Airport
+115
+
+Charlotte Douglas International Airport
+Nashville International Airport
+210
+
+Bismarck Municipal Airport
+Bozeman Yellowstone International Airport
+520
+
+Bismarck Municipal Airport
+Detroit Metropolitan Airport
+410
+
+John Glenn Columbus International Airport
+Indianapolis International Airport
+330
+
+Harrisburg International Airport
+John Glenn Columbus International Airport
+340
+
+Will Rogers World Airport
+DallasFort Worth International
+170
+
+Los Angeles International Airport
+Albuquerque International Sunport
+160
+
+Columbia Metropolitan Airport
+Springfield-Branson National Airport
+500
+
+Charlotte Douglas International Airport
+Columbia Metropolitan Airport
+400
+
+Sioux Falls Regional Airport
+Bismarck Municipal Airport
+583
+
+Sioux Falls Regional Airport
+Reno-Tahoe International Airport
+450
+
+Burlington International Airport 
+John F. Kennedy International Airport
+130
+
+Richmond International Airport
+CincinnatiNorthern Kentucky International Airport
+431
+
+Springfield-Branson National Airport
+Nashville International Airport
+375
+
+Yeager Airport
+Newark Liberty International Airport 
+380
+
+Central Wisconsin Airport
+Detroit Metropolitan Airport
+270

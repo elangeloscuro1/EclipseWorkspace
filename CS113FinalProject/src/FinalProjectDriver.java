@@ -1,5 +1,5 @@
-import java.text.ParseException ;
-import java.util.InputMismatchException ;
+import java.io.FileInputStream ;
+import java.io.FileNotFoundException ;
 import java.util.Scanner ;
 
 public class FinalProjectDriver// extends JFrame
@@ -38,18 +38,34 @@ public class FinalProjectDriver// extends JFrame
 	
 	public static void main(String[] args)
 	{
-		
-		TravelPlanner test = null ;
 		try
 		{
-			test = new TravelPlanner(airports, costs) ;
+			TravelPlanner2 test2 = new TravelPlanner2(new Scanner(new FileInputStream("FlightData.txt"))) ;
+
+			Flight[] test3 = test2.getSortedByFromAToZdestination() ;
+			for (int i = 0; i < test3.length; i++)
+			{
+				System.out.println(test3[i].getDestination()) ;
+				
+			}
+			
 		}
-		catch (InputMismatchException | ParseException e)
+		catch (FileNotFoundException e)
 		{
-			System.out.println(e) ;
+			System.out.println(e.getMessage()) ;
 		}
-//		test.findCheapestPath(2, 4) ;	
-		System.out.println(test.addFlight(0, 1)) ;
+		
+//		TravelPlanner test = null ;
+//		try
+//		{
+//			test = new TravelPlanner(airports, costs) ;
+//		}
+//		catch (InputMismatchException | ParseException e)
+//		{
+//			System.out.println(e) ;
+//		}
+////		test.findCheapestPath(2, 4) ;	
+//		System.out.println(test.addFlight(0, 1)) ;
 		
 	}
 
