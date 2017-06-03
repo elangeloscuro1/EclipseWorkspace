@@ -14,7 +14,8 @@ public class WebScrapTest
 	{
 		try
 		{
-			URL url = new URL("https://www.wikipedia.com/") ;
+//			URL url = new URL("https://www.wikipedia.com/") ;
+			URL url = new URL("http://canyouseeme.org/") ;
 			BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream())) ;
 			
 //			String string = "" ;
@@ -27,21 +28,27 @@ public class WebScrapTest
 			Scanner scan = new Scanner(url.openStream()) ;
 			
 			
-			
+			String keyword = "<input id=\"ip\" type=\"text\" value=\"" ;
 			while(scan.hasNext())
 			{
-				String next = scan.next() ;
-				if (next.contains("href=\"http://"))
+				String next = scan.nextLine().trim() ;
+				
+				if (next.contains(keyword))//" href=\"http://"   
 				{
-					System.out.println(next) ;
+					
+					String ip = next.substring(keyword.length()) ;
+					ip = ip.substring(0, ip.indexOf("\"")) ;
+					System.out.println(ip) ;
 				}
 			}
+			reader.close() ;
 			
 		}
 		catch (Exception e)
 		{
 			System.out.println("ERROR: " + e.getMessage()) ;
 		}
+		
 	}
 }
 /**
