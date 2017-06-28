@@ -14,7 +14,11 @@ public class DateClient
 		{
 			try
 			{
-				String hostname = "localhost" ;// OR: http://canyouseeme.org/
+				//http://canyouseeme.org
+				//192.168.0.4
+				//localhost
+				//172.58.21.91
+				String hostname = "68.6.221.178" ;
 				int port = 7654 ;
 
 				System.out.println("Connecting to server on port " + port) ;
