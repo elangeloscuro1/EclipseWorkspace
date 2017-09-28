@@ -1,35 +1,37 @@
 package C19_2_NetworkingWithStreamSocketsDateServer ;
 
+
 import java.net.ServerSocket ;
-import java.net.Socket ;
-import java.io.IOException ;
 
 public class DateServer
 {
+	
 	public static void main(String[] args)
 	{
-		
 		while (true)
 		{
 			try
-			{
-				
+			{				
 				System.out.println("------------------------------------") ;
 				System.out.println("Waiting for a connection on port 7654.") ;
 				
-				ServerSocket serverSock = new ServerSocket(7654) ;				
+				ServerSocket serverSock = new ServerSocket(7654) ;
 				ClientHandler handler = new ClientHandler(serverSock) ;
 				Thread thread = new Thread(handler) ;
 				thread.run() ;
 				serverSock.close() ;
 			}
-			catch (IOException e)
+			catch (Exception e)
 			{
 				System.out.println("ERROR: DateServer ==> :" + e.getMessage()) ;
 			}
 		}
+		
+
 	}
+	
 }
+
 
 
 /*
