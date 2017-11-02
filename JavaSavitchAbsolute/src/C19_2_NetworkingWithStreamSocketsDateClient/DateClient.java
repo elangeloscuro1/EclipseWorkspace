@@ -54,7 +54,7 @@ public class DateClient // Original
 		try
 		{
 			String hostname = "localhost" ;
-			int port = 7655 ;
+			int port = 7654 ;
 			
 			System.out.println("Connecting to server on port " + port) ;
 			

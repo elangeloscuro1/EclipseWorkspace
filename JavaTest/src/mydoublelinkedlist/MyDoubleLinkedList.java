@@ -71,7 +71,7 @@ public class MyDoubleLinkedList<T> implements List<T>
 		 */
 		public DoubleListIterator()
 		{
-			this.nextItem = (Node<T>) head ;
+			this.nextItem = head ;
 			this.lastItemReturned = null ;
 			this.index = 0 ;
 		}
@@ -96,7 +96,7 @@ public class MyDoubleLinkedList<T> implements List<T>
 			}
 			else
 			{
-				this.nextItem = (Node<T>) head ;
+				this.nextItem = head ;
 				for (this.index = 0; this.index < index; this.index++)
 				{
 					this.nextItem = this.nextItem.next ;
@@ -379,7 +379,7 @@ public class MyDoubleLinkedList<T> implements List<T>
 		
 		while(thisListIterator.hasNext())
 		{
-			if (thisListIterator.next().equals( (T) object ))
+			if (thisListIterator.next().equals( object ))
 			{
 				return true ;
 			}		
@@ -440,7 +440,7 @@ public class MyDoubleLinkedList<T> implements List<T>
 
 		while (thisListIterator.hasNext())
 		{
-			if (thisListIterator.next().equals((T) object))
+			if (thisListIterator.next().equals(object))
 			{
 				return thisListIterator.previousIndex() ;
 			}
@@ -483,7 +483,7 @@ public class MyDoubleLinkedList<T> implements List<T>
 
 		while (thisListIterator.hasPrevious())
 		{
-			if (thisListIterator.previous().equals((T) object))
+			if (thisListIterator.previous().equals(object))
 			{
 				return thisListIterator.nextIndex() ;
 			}
@@ -525,7 +525,7 @@ public class MyDoubleLinkedList<T> implements List<T>
 		
 		while (thisListIterator.hasNext())
 		{
-			if (thisListIterator.next().equals((T) object))
+			if (thisListIterator.next().equals(object))
 			{
 				thisListIterator.remove() ;
 				return true ;
@@ -679,7 +679,7 @@ public class MyDoubleLinkedList<T> implements List<T>
 		
 		for (int i = 0; thisListIterator.hasNext() ; i++)
 		{
-			tempList[i] = (Object) thisListIterator.next() ;
+			tempList[i] = thisListIterator.next() ;
 		}		
 		return tempList ;
 	}
@@ -698,7 +698,7 @@ public class MyDoubleLinkedList<T> implements List<T>
 		
 		for (int i = 0; thisListIterator.hasNext() ; i++)
 		{
-			a[i] = (T) thisListIterator.next() ;
+			a[i] = thisListIterator.next() ;
 		}		
 		return a ;
 	}

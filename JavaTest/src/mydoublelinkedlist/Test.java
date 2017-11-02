@@ -1,6 +1,5 @@
 package mydoublelinkedlist;
 
-import java.util.Iterator ;
 import java.util.ListIterator ;
 
 public class Test

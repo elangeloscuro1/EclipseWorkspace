@@ -39,6 +39,7 @@ public class BinarySearchTree<E extends Comparable<E>>
 	 * @param target The Comparable object being sought
 	 * @return The object, if found, otherwise null
 	 */
+	@Override
 	public E find(E target) {
 		return find(root, target);
 	}
@@ -69,6 +70,7 @@ public class BinarySearchTree<E extends Comparable<E>>
 	 * pre: The object to insert must implement the 
 	 *      Comparable interface
 	 */
+	@Override
 	public boolean add(E item) {
 		root = add(root, item);
 		return addReturn;
@@ -111,6 +113,7 @@ public class BinarySearchTree<E extends Comparable<E>>
 	 * @throws ClassCastException if target does not implement
 	 *         Comparable     
 	 */
+	@Override
 	public E delete(E target) {
 		root = delete(root, target);
 		return deleteReturn;

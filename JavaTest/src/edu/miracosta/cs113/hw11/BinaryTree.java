@@ -44,6 +44,7 @@ public class BinaryTree<E extends Comparable<E>> implements Serializable {
 		/** Return a string representation of the node.
 		 * @return A string representation of the data fields
 		 */
+		@Override
 		public String toString() {
 			return data.toString();
 		}
@@ -158,6 +159,7 @@ public class BinaryTree<E extends Comparable<E>> implements Serializable {
 	/** General output to console toString method
 	 * 
 	 */
+	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		preOrderTraverse(root, 1, sb);
@@ -329,6 +331,7 @@ public class BinaryTree<E extends Comparable<E>> implements Serializable {
 	// http://www.experts-exchange.com/Programming/Languages/Java/Q_22953171.html
 	// http://stackoverflow.com/questions/5372512/java-binary-search-tree-recursive-copy-tree
 	/** Clone method provides a deep copy of root */
+	@Override
 	public BinarySearchTree<E> clone() {
 		BinarySearchTree<E> newTree = new BinarySearchTree<E>();
 		newTree.root = clone(root);

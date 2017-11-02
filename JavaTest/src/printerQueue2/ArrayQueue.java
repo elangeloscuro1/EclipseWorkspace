@@ -77,7 +77,7 @@ public class ArrayQueue<T> extends AbstractQueue<T> implements Queue<T>
 			{
 				throw new NoSuchElementException() ;
 			}
-			T temp = (T) dataArray[this.index] ;
+			T temp = dataArray[this.index] ;
 			this.index = (this.index + 1) % capacity ;
 			this.count++ ;
 			return temp ;

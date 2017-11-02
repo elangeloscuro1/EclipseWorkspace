@@ -129,6 +129,7 @@ public class HashtableChain<K, V> implements Map<K, V>
 		 * 
 		 * @return The string in format "key=value"
 		 */
+		@Override
 		public String toString()
 		{
 			return key + "=" + value ;
@@ -231,6 +232,7 @@ public class HashtableChain<K, V> implements Map<K, V>
 	/* </listing> */
 
 	/** Returns true if empty */
+	@Override
 	public boolean isEmpty()
 	{
 		return numKeys == 0 ;
@@ -433,6 +435,7 @@ public class HashtableChain<K, V> implements Map<K, V>
 	/**
 	 * Returns a String representation of the map.
 	 */
+	@Override
 	public String toString()
 	{
 		StringBuilder sb = new StringBuilder() ;

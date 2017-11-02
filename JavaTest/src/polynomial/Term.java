@@ -56,7 +56,7 @@ public class Term implements Comparable
 		this.variable = variable ;
 		if (isConstant())
 		{
-			this.coefficient = (int) Math.pow((double) coefficient, (double) exponent) ;
+			this.coefficient = (int) Math.pow(coefficient, exponent) ;
 			this.exponent = 1 ;
 		}
 		else
