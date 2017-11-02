@@ -4,6 +4,7 @@ import java.io.InputStreamReader ;
 import java.net.InetAddress ;
 import java.net.ServerSocket ;
 import java.net.Socket ;
+import java.net.UnknownHostException ;
 
 @SuppressWarnings("resource")
 public class ServerClient
@@ -11,23 +12,22 @@ public class ServerClient
 	private static final String HOSTNAME = "localhost" ;// 127.0.0.1/localhost
 	private static final int PORT = 7654 ;
 
-	public static void main(String args[]) throws Exception
+	public static void main(String args[])
 	{
-		ServerSocket server = new ServerSocket(PORT) ;
-		Socket client = new Socket(HOSTNAME, PORT) ;
 		
 		
-		System.out.println(InetAddress.getLocalHost()) ;
-		System.out.println(InetAddress.getLoopbackAddress()) ;
-		System.out.println() ;
-		System.out.println(server.getLocalPort()) ;
-		System.out.println(server.getLocalSocketAddress()) ;
-		System.out.println() ;
-		System.out.println(client.getLocalPort()) ;
-		System.out.println(client.getLocalAddress()) ;
-		
-		// server() ;
-		// client() ;
+		try
+		{
+			System.out.println(InetAddress.getLocalHost()) ;
+			System.out.println(InetAddress.getLoopbackAddress()) ;
+			// server() ;
+			// client() ;
+		}
+		catch (UnknownHostException e)
+		{
+			System.out.println("ERROR: " + e.getMessage()) ;
+		}
+
 	}// END of main
 
 	public static void server()
@@ -68,11 +68,9 @@ public class ServerClient
 	public static void client()
 	{
 		boolean flag = true ;
-		while (flag)
-		{
+		while (flag)		
 			try
 			{
-
 				System.out.println("Connecting to server on port " + PORT) ;
 
 				Socket connectionSock = new Socket(HOSTNAME, PORT) ;
@@ -84,7 +82,7 @@ public class ServerClient
 				System.out.print("Connection made, Send data to server: ") ;
 				String input = new java.util.Scanner(System.in).nextLine() + "\n" ;
 				flag = input.charAt(0) != 'x' ;
-				serverOutput.writeBytes(input) ;
+				serverOutput.writeBytes(!flag ? input : "Client quited!!\n") ;
 
 				String serverData = serverInput.readLine() ;
 				System.out.println("SERVER: " + serverData) ;
@@ -98,7 +96,5 @@ public class ServerClient
 				System.out.println("ERROR: DateClient ==> : " + e.getMessage()) ;
 				System.exit(0) ;
 			}
-		}
 	}// END of client
-
 }
