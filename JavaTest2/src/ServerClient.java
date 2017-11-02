@@ -1,17 +1,31 @@
 import java.io.BufferedReader ;
 import java.io.DataOutputStream ;
 import java.io.InputStreamReader ;
+import java.net.InetAddress ;
 import java.net.ServerSocket ;
 import java.net.Socket ;
 
 @SuppressWarnings("resource")
 public class ServerClient
 {
-	private static final String HOSTNAME = "ip6localhost" ;// 127.0.0.1/localhost
+	private static final String HOSTNAME = "localhost" ;// 127.0.0.1/localhost
 	private static final int PORT = 7654 ;
 
-	public static void main(String args[])
+	public static void main(String args[]) throws Exception
 	{
+		ServerSocket server = new ServerSocket(PORT) ;
+		Socket client = new Socket(HOSTNAME, PORT) ;
+		
+		
+		System.out.println(InetAddress.getLocalHost()) ;
+		System.out.println(InetAddress.getLoopbackAddress()) ;
+		System.out.println() ;
+		System.out.println(server.getLocalPort()) ;
+		System.out.println(server.getLocalSocketAddress()) ;
+		System.out.println() ;
+		System.out.println(client.getLocalPort()) ;
+		System.out.println(client.getLocalAddress()) ;
+		
 		// server() ;
 		// client() ;
 	}// END of main
