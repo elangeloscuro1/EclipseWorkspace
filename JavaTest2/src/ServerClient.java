@@ -13,15 +13,15 @@ public class ServerClient
 	
 	public static void main(String[] args)
 	{
-		server() ;
-		//client() ;
+		//server() ;
+		client() ;
 	}// END of main
 	
 	
 	public static void server()
 	{
 		boolean flag = true ;
-		while (true)
+		while (flag)
 		try
 		{
 			System.out.println("------------------------------------") ;
@@ -34,11 +34,12 @@ public class ServerClient
 
 			System.out.println("Connection made, waiting data from client: ") ;
 			System.out.println("CLIENT: " + clientInput.readLine()) ;
-			System.out.print(">> ") ;
 			String input = new java.util.Scanner(System.in).nextLine() + "\n" ;
+			
+			flag = input.charAt(0) != 'x' ;
 			clientOutput.writeBytes(input) ;
 
-			clientOutput.close() ;
+			clientOutput.close() ; 
 			clientInput.close() ;
 			connectionSock.close() ;
 			serverSock.close() ;
@@ -55,7 +56,8 @@ public class ServerClient
 	
 	public static void client()
 	{
-		while (true)
+		boolean flag = true ;
+		while (flag)
 		{
 			try
 			{
@@ -68,6 +70,7 @@ public class ServerClient
 
 				System.out.print("Connection made, Send data to server: ") ;
 				String input = new java.util.Scanner(System.in).nextLine() + "\n" ;
+				flag = input.charAt(0) != 'x' ;
 				serverOutput.writeBytes(input) ;
 				
 				String serverData = serverInput.readLine() ;
