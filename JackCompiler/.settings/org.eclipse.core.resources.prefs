@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+encoding//src/jack2vm/SymbolTable.java=UTF-8
+encoding//src/jack2xml/JackAnalyzer.java=UTF-8
+encoding//src/vm2asm/CodeWriter.java=UTF-8
+encoding//src/vm2asm/Parser.java=UTF-8
